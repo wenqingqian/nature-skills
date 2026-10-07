@@ -4,7 +4,7 @@
   </p>
   <p>
     <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-2ea44f"></a>
-    <a href="#5-安装"><img alt="Install" src="https://img.shields.io/badge/install-Claude%20Code%20%7C%20Codex%20%7C%20OpenClaw%20%7C%20OpenCode%20%7C%20Hermes-111827"></a>
+    <a href="#5-安装"><img alt="Install" src="https://img.shields.io/badge/install-Claude%20Code%20%7C%20Codex%20%7C%20ZCode%20%7C%20OpenClaw%20%7C%20OpenCode%20%7C%20Hermes-111827"></a>
     <a href="#6-技能索引"><img alt="Skills" src="https://img.shields.io/badge/skills-20-0ea5e9"></a>
     <a href="README_EN.md"><img alt="Language" src="https://img.shields.io/badge/language-中文%20%7C%20English-1f6feb"></a>
   </p>
@@ -45,8 +45,9 @@
   - [5.1 `npx skills` 安装方式](#51-npx-skills-安装方式)
   - [5.2 Claude Code 安装方式](#52-claude-code-安装方式)
   - [5.3 Codex 安装方式](#53-codex-安装方式)
-  - [5.4 Chatbox 安装与使用](#54-chatbox-安装与使用)
-  - [5.5 其他 Agent 场景](#55-其他-agent-场景)
+  - [5.4 ZCode 安装方式](#54-zcode-安装方式)
+  - [5.5 Chatbox 安装与使用](#55-chatbox-安装与使用)
+  - [5.6 其他 Agent 场景](#56-其他-agent-场景)
 - [6. 技能索引](#6-技能索引)
 - [7. 贡献与开发](#7-贡献与开发)
 - [8. Star 历史](#8-star-历史)
@@ -429,7 +430,31 @@ git clone https://github.com/Yuan1z0825/nature-skills.git ~/.codex/.nature-skill
 
 每个安装目标使用独立日志，路径为 `~/.local/state/nature-skills/<目标目录编号>/autoupdate.log`。拉取到的新技能通常在下一次会话中完整生效。
 
-### 5.4 Chatbox 安装与使用
+### 5.4 ZCode 安装方式
+
+ZCode 内置插件市场。本仓库自带 `marketplace.json` 与 `.zcode-plugin/plugin.json`，可以把整个仓库作为插件市场添加，一次安装全部技能，不需要手动复制技能目录。
+
+**添加市场并安装**
+
+1. 打开 ZCode 的「插件市场 / Plugin Marketplace」，点击「添加 / Add → 添加插件市场 / Add Plugin Marketplace」。
+2. 粘贴仓库地址 `Yuan1z0825/nature-skills`（或完整 GitHub URL `https://github.com/Yuan1z0825/nature-skills`），点击「添加 / Add」。
+3. 在「个人 / Personal」页找到 `nature-skills` 市场下的「Nature Skills」，点击「安装 / Install」。
+
+安装后 20 个可触发技能整体可用，`nature-shared` 共享支持包随插件一并安装，供写作、润色、返修、reader 和 paper2ppt 等技能引用。技能按描述在会话中自动触发，也可以在技能选择器中手动指定；技能名使用 `SKILL.md` 的 frontmatter 名称，例如 `nature-proposal-writer` 显示为 `researchwrite`。可在「设置 → 插件」中统一启用、停用或卸载。
+
+安装后新建任务即可使用，例如：
+
+```text
+把这篇论文做成中英文对照的完整 Markdown reader。
+```
+
+**更新**
+
+在插件市场页的「市场源 / Marketplace Sources」中刷新 `nature-skills` 市场，然后在「个人 / Personal」页的插件详情中点击「更新 / Update」。
+
+Python/R、浏览器和 MCP 等可选运行依赖不随插件安装；需要时按 5.1 和 5.3 的依赖说明单独配置。
+
+### 5.5 Chatbox 安装与使用
 
 [Chatbox](https://chatboxai.app/zh) 桌面版提供图形化 Skills 管理界面。请使用带有「设置 → 技能（Skills）」入口的版本；本节适用于桌面端。
 
@@ -468,7 +493,7 @@ Skills 安装的是指令和配套文件。Python/R、PDF/PPTX 工具、浏览�
 
 在技能的操作菜单中可「检查更新」并按提示更新；有共享依赖时也要检查 `nature-shared`。如果 GitHub 扫描或下载失败，可从本仓库的「Code → Download ZIP」下载并解压，点击 Chatbox 的「打开技能文件夹」，将所需的完整技能目录及 `nature-shared` 放到该文件夹的同一级，然后刷新技能列表并启用。保留 `references/`、`static/`、脚本和资产；不要只复制 `SKILL.md`。手动复制时，目录名应与 `SKILL.md` 中的 `name` 一致（例如将 `nature-proposal-writer` 目录命名为 `researchwrite`）。手动复制的技能需要手动更新。
 
-### 5.5 其他 Agent 场景
+### 5.6 其他 Agent 场景
 
 OpenClaw、OpenCode、Hermes 的具体接入方式见 [OpenClaw / OpenCode / Hermes 接入教程](docs/open-source-agent-frameworks.md)。
 

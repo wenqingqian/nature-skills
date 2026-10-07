@@ -4,7 +4,7 @@
   </p>
   <p>
     <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-2ea44f"></a>
-    <a href="#5-installation"><img alt="Install" src="https://img.shields.io/badge/install-Claude%20Code%20%7C%20Codex%20%7C%20OpenClaw%20%7C%20OpenCode%20%7C%20Hermes-111827"></a>
+    <a href="#5-installation"><img alt="Install" src="https://img.shields.io/badge/install-Claude%20Code%20%7C%20Codex%20%7C%20ZCode%20%7C%20OpenClaw%20%7C%20OpenCode%20%7C%20Hermes-111827"></a>
     <a href="#6-skill-index"><img alt="Skills" src="https://img.shields.io/badge/skills-20-0ea5e9"></a>
     <a href="README.md"><img alt="Language" src="https://img.shields.io/badge/language-English%20%7C%20中文-1f6feb"></a>
   </p>
@@ -37,8 +37,9 @@
   - [5.1 `npx skills` Installation](#51-npx-skills-installation)
   - [5.2 Claude Code Installation](#52-claude-code-installation)
   - [5.3 Codex Installation](#53-codex-installation)
-  - [5.4 Chatbox Installation and Usage](#54-chatbox-installation-and-usage)
-  - [5.5 Other Agent Scenarios](#55-other-agent-scenarios)
+  - [5.4 ZCode Installation](#54-zcode-installation)
+  - [5.5 Chatbox Installation and Usage](#55-chatbox-installation-and-usage)
+  - [5.6 Other Agent Scenarios](#56-other-agent-scenarios)
 - [6. Skill Index](#6-skill-index)
 - [7. Contribution and Development](#7-contribution-and-development)
 - [8. Star History](#8-star-history)
@@ -502,7 +503,31 @@ Each destination has a separate log at
 `~/.local/state/nature-skills/<destination-id>/autoupdate.log`. Newly fetched
 skills normally take full effect in the next session.
 
-### 5.4 Chatbox Installation and Usage
+### 5.4 ZCode Installation
+
+ZCode ships with a plugin marketplace. This repository includes `marketplace.json` and `.zcode-plugin/plugin.json`, so it can be added as a plugin marketplace and installed in one step, without copying skill directories manually.
+
+**Add the marketplace and install**
+
+1. Open **Plugin Marketplace** in ZCode and click **Add → Add Plugin Marketplace**.
+2. Paste `Yuan1z0825/nature-skills` (or the full GitHub URL `https://github.com/Yuan1z0825/nature-skills`) and click **Add**.
+3. Under **Personal**, find **Nature Skills** in the `nature-skills` marketplace and click **Install**.
+
+After installation, all 20 triggerable skills are available, and the `nature-shared` support package is installed alongside them for the writing, polishing, response, reader, and paper2ppt skills. Skills trigger automatically from their descriptions in a session, or can be selected explicitly in the skill picker. Skill names follow the `SKILL.md` frontmatter, so `nature-proposal-writer` appears as `researchwrite`. Enable, disable, or uninstall the plugin under **Settings → Plugins**.
+
+Start a new task after installing and describe your work naturally, for example:
+
+```text
+Turn this paper into a full Chinese-English side-by-side Markdown reader.
+```
+
+**Updating**
+
+Refresh the `nature-skills` marketplace under **Marketplace Sources** on the marketplace page, then click **Update** on the plugin's detail page under **Personal**.
+
+Optional runtimes such as Python/R, browsers, and MCP services are not installed with the plugin; configure them as described in sections 5.1 and 5.3 when needed.
+
+### 5.5 Chatbox Installation and Usage
 
 [Chatbox](https://chatboxai.app/) desktop provides a graphical Skills manager. Use a version with a **Settings → Skills** entry; this section applies to the desktop app.
 
@@ -543,7 +568,7 @@ Installing skills adds instructions and supporting files. Configure Python/R, PD
 
 Use **Check Update** in a skill's action menu and follow the prompts to update it; also check `nature-shared` when it is a dependency. If GitHub scanning or downloading fails, download and extract this repository through **Code → Download ZIP**, click **Open Skills Folder** in Chatbox, and place the complete skill directories and `nature-shared` alongside one another in that folder. Refresh the skill list and enable them. Preserve `references/`, `static/`, scripts, and assets; do not copy only `SKILL.md`. For manual copies, match the directory name to the `name` in `SKILL.md` (for example, name the `nature-proposal-writer` directory `researchwrite`). Manually copied skills require manual updates.
 
-### 5.5 Other Agent Scenarios
+### 5.6 Other Agent Scenarios
 
 For OpenClaw, OpenCode, and Hermes, see the dedicated [integration guide](docs/open-source-agent-frameworks_EN.md).
 
